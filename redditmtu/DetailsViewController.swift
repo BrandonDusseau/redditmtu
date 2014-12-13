@@ -21,7 +21,7 @@ class DetailsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        // super.viewDidLoad()
         titleLabel.text = self.post?.title
         postAuthor.text = self.post?.author
         //albumCover.image = UIImage(data: NSData(contentsOfURL: NSURL(string: self.album!.largeImageURL)!)!)
