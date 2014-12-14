@@ -23,6 +23,8 @@
 		013EC20D1A3B973B006234D5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */; };
 		078116381A3E128400887A5C /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078116371A3E128400887A5C /* Backend.swift */; };
 		0781163C1A3E147D00887A5C /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781163B1A3E147D00887A5C /* Listing.swift */; };
+		0781163E1A3E306700887A5C /* PostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781163D1A3E306700887A5C /* PostPage.swift */; };
+		078116401A3E35C700887A5C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781163F1A3E35C700887A5C /* Comment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		078116371A3E128400887A5C /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		0781163B1A3E147D00887A5C /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		0781163D1A3E306700887A5C /* PostPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPage.swift; sourceTree = "<group>"; };
+		0781163F1A3E35C700887A5C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		013EC1CF1A3B95E9006234D5 /* redditmtu */ = {
 			isa = PBXGroup;
 			children = (
+				0781163D1A3E306700887A5C /* PostPage.swift */,
 				013EC1F51A3B973B006234D5 /* Album.swift */,
 				013EC1F61A3B973B006234D5 /* APIController.swift */,
 				013EC1F71A3B973B006234D5 /* AppDelegate.swift */,
@@ -112,6 +117,7 @@
 				013EC1D01A3B95E9006234D5 /* Supporting Files */,
 				078116371A3E128400887A5C /* Backend.swift */,
 				0781163B1A3E147D00887A5C /* Listing.swift */,
+				0781163F1A3E35C700887A5C /* Comment.swift */,
 			);
 			path = redditmtu;
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 				078116381A3E128400887A5C /* Backend.swift in Sources */,
 				013EC1D61A3B95E9006234D5 /* redditmtu.xcdatamodeld in Sources */,
 				013EC2031A3B973B006234D5 /* Album.swift in Sources */,
+				078116401A3E35C700887A5C /* Comment.swift in Sources */,
+				0781163E1A3E306700887A5C /* PostPage.swift in Sources */,
 				013EC2041A3B973B006234D5 /* APIController.swift in Sources */,
 				013EC20D1A3B973B006234D5 /* SearchResultsViewController.swift in Sources */,
 				013EC2091A3B973B006234D5 /* DetailsViewController.swift in Sources */,

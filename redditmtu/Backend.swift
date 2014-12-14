@@ -50,6 +50,11 @@ func getListingURLBefore(subreddit: String?, previousListing: Listing?, count: I
     }
 }
 
+func getPostPageUrl(post: Post) -> String {
+    var permaLink = post.permaLink.substringToIndex(post.permaLink.endIndex.predecessor())
+    return "http://www.reddit.com/\(permaLink).json"
+}
+
 func getFrontPageURL() -> String {
     return "http://www.reddit.com/.json"
 }
@@ -61,3 +66,37 @@ func getSubredditURL(subreddit: String) -> String {
 func parseListingData(jsonResult : NSDictionary) -> Listing {
     return Listing(jsonResult: jsonResult)
 }
+
+func parsePostPageData(post : Post, jsonResult : NSArray) -> PostPage {
+    return PostPage(post: post, jsonResult : jsonResult)
+}
+
+func parseCommentsListing(listing: NSDictionary) -> [Comment]{
+    var comments = [Comment]()
+    
+    var rootComments = listing["data"]!["children"] as NSArray
+    
+    if rootComments.count > 0 {
+        for commentDict in rootComments {
+            var kind = commentDict["kind"]! as String
+            if kind == "more" {
+                return comments
+            }
+            
+            var dataDict = commentDict["data"] as NSDictionary
+            var comment = Comment(data: dataDict)
+            comments.append(comment)
+        }
+    }
+    
+    return comments
+}
+
+func getStringOrEmpty(theString : String?) -> String{
+    var text = ""
+    if let tempText = theString {
+        text = tempText
+    }
+    return text
+}
+
