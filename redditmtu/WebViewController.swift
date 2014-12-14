@@ -13,7 +13,7 @@ class WebViewController : UIViewController {
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
-        let firstHalf = "https://ssl.reddit.com/api/v1/authorize?client_id=n7Vg85H--tQlBw&response_type=code&state="
+        let firstHalf = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state="
         let secondHalf = "&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
