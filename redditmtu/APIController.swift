@@ -26,7 +26,6 @@ class APIController{
             let url = NSURL(string: urlPath)
             let session = NSURLSession.sharedSession()
             let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-                println("Task completed")
                 if(error != nil) {
                     // If there is an error in the web request, print it to the console
                     println(error.localizedDescription)
@@ -48,28 +47,4 @@ class APIController{
         
     }
     
-    // Returns JSON from HTTP request
-    // api: API location (for example, /api/v1/me)
-    // postdata: POST query (key1=val1&key2=val2)
-    // Returns NSDictionary with JSON response
-    class func sendHTTPQuery(api: String, postdata: String) -> NSDictionary {
-        let urlPath: String = "https://www.reddit.com/\(api)"
-        var url: NSURL = NSURL(string: urlPath)!
-        var request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?
-        >=nil
-        
-        let requestBodyData = (postdata as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        request.HTTPBody = requestBodyData
-        
-        var error: NSErrorPointer = nil
-        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)!
-        var err: NSError
-        println(response)
-        var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        
-        println("API call: \(api)\nPOST data: \(postdata)")
-        println("Synchronous\(jsonResult)")
-        return jsonResult
     }
-}

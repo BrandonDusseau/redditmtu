@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        println("Hello world")
+        
+        // Set user agent for HTTP API calls
+        NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent" : "redditmtu/1.0"])
+        
         return true
     }
 

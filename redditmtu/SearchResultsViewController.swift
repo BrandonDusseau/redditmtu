@@ -30,7 +30,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         self.title = "Front Page"
         
         // Testing code
-        APIController.sendHTTPQuery("/api/v1/me", postdata:"")
+        //sendHTTPQuery("/api/v1/me", postdata:"")
        
     }
     func printNo(){
@@ -144,10 +144,21 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         if (segue.identifier == "loginSegue") {
             var destViewController = segue.destinationViewController as WebViewController
             let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
-            var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
+            var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,mysubreddits,read"
             
             destViewController.inputURL = finalURL
         }
+    }
+    
+    @IBAction func TriggerThing(sender: AnyObject) {
+        //if (auth_token == nil) {
+        //    getAuthToken("lT6GHnJG0TJR4FlkS5DIYXafOC4")
+        //}
+        //getAccountIdentity()
+        //getAccountFriends()
+        //getAccountKarma()
+        //getAccountTrophies()
+        //getAccountSubreddits()
     }
     
 }
