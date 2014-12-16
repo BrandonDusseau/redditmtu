@@ -24,12 +24,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         api!.loadReddit()
         
-        self.title = "FrontPage"
-        
-        var homeButton : UIBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItemStyle.Plain, target: self, action:"loadLogin")
-        
-        
-        self.navigationItem.leftBarButtonItem = homeButton
+        self.title = "Front Page"
        
     }
     func printNo(){
@@ -37,9 +32,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func loadLogin(){
-        var sb : UIStoryboard!
-        sb = UIStoryboard(name:"Main",bundle:nil)
-        let vc : UIViewController = sb.instantiateViewControllerWithIdentifier("vcLogin") as UIViewController
+        let vc : UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("vcLogin") as UIViewController
         //self.window!.rootViewController = viewcontroller
         //let vc = LoginController
         navigationController?.pushViewController(vc, animated:true)
@@ -130,10 +123,28 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 //    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var detailsViewController: DetailsViewController = segue.destinationViewController as DetailsViewController
-        var postIndex = appsTableView!.indexPathForSelectedRow()!.row
-        var selectedPost = self.posts[postIndex]
-        detailsViewController.post = selectedPost
+        
+        // See if we're headed to the Detail View
+        if (segue.identifier == "detailSegue") {
+            
+            // Get the controller so we can pass info to it.
+            var detailsViewController = segue.destinationViewController as DetailsViewController
+            var postIndex = appsTableView!.indexPathForSelectedRow()!.row
+            var selectedPost = self.posts[postIndex]
+            detailsViewController.post = selectedPost
+        }
+        
+        // Check if we're going to the Login Page
+        if (segue.identifier == "loginSegue") {
+            var destViewController = segue.destinationViewController as WebViewController
+            
+            let firstHalf = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state="
+            let secondHalf = "&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
+            
+            var finalURL = firstHalf + NSUUID().UUIDString + secondHalf
+            
+            destViewController.inputURL = finalURL
+        }
     }
     
 }
