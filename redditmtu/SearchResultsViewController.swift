@@ -137,6 +137,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Check if we're going to the Login Page
         if (segue.identifier == "loginSegue") {
             var destViewController = segue.destinationViewController as WebViewController
+            
+            let firstHalf = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state="
+            let secondHalf = "&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
+            
+            var finalURL = firstHalf + NSUUID().UUIDString + secondHalf
+            
+            destViewController.inputURL = finalURL
         }
     }
     
