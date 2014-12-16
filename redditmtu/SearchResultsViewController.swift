@@ -5,6 +5,9 @@
 //  Created by Jameson Quave on 9/16/14.
 //  Copyright (c) 2014 JQ Software LLC. All rights reserved.
 //
+//  Modified for use on RedditMTU
+//  Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
+//
 
 import UIKit
 
@@ -25,6 +28,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         api!.loadReddit()
         
         self.title = "Front Page"
+        
+        // Testing code
+        APIController.sendHTTPQuery("/api/v1/me", postdata:"")
        
     }
     func printNo(){
@@ -137,11 +143,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Check if we're going to the Login Page
         if (segue.identifier == "loginSegue") {
             var destViewController = segue.destinationViewController as WebViewController
-            
-            let firstHalf = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state="
-            let secondHalf = "&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
-            
-            var finalURL = firstHalf + NSUUID().UUIDString + secondHalf
+            let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
+            var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
             
             destViewController.inputURL = finalURL
         }
