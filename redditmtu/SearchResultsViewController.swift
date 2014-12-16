@@ -146,7 +146,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
             var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,mysubreddits,read"
             
-            destViewController.inputURL = finalURL
+            if (true) {
+                var destViewController = segue.destinationViewController as AccountViewController
+                destViewController.accountDate = "Date is testy."
+                destViewController.username = "Test test test."
+                
+            } else {
+                var destViewController = segue.destinationViewController as LoginWebView
+                let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
+                var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
+                
+                destViewController.inputURL = finalURL
+            }
         }
     }
     
