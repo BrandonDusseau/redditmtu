@@ -18,11 +18,13 @@
 		013EC2091A3B973B006234D5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1FE1A3B973B006234D5 /* DetailsViewController.swift */; };
 		013EC20C1A3B973B006234D5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC2011A3B973B006234D5 /* Post.swift */; };
 		013EC20D1A3B973B006234D5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */; };
+		017537E11A40F22700CB39FB /* LoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017537E01A40F22700CB39FB /* LoginWebView.swift */; };
 		01DDCC7E1A3FFAF600D0F271 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DDCC7D1A3FFAF600D0F271 /* WebViewController.swift */; };
 		078116381A3E128400887A5C /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078116371A3E128400887A5C /* Backend.swift */; };
 		0781163C1A3E147D00887A5C /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781163B1A3E147D00887A5C /* Listing.swift */; };
 		0781163E1A3E306700887A5C /* PostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781163D1A3E306700887A5C /* PostPage.swift */; };
 		078116401A3E35C700887A5C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0781163F1A3E35C700887A5C /* Comment.swift */; };
+		E8AC6F861A412F9700806E46 /* APICommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC6F851A412F9700806E46 /* APICommentController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,11 +53,13 @@
 		013EC1FE1A3B973B006234D5 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		013EC2011A3B973B006234D5 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		017537E01A40F22700CB39FB /* LoginWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWebView.swift; sourceTree = "<group>"; };
 		01DDCC7D1A3FFAF600D0F271 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		078116371A3E128400887A5C /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		0781163B1A3E147D00887A5C /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 		0781163D1A3E306700887A5C /* PostPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPage.swift; sourceTree = "<group>"; };
 		0781163F1A3E35C700887A5C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		E8AC6F851A412F9700806E46 /* APICommentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICommentController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			children = (
 				013EC1F51A3B973B006234D5 /* Album.swift */,
 				013EC1F61A3B973B006234D5 /* APIController.swift */,
+				E8AC6F851A412F9700806E46 /* APICommentController.swift */,
 				013EC1F71A3B973B006234D5 /* AppDelegate.swift */,
 				078116371A3E128400887A5C /* Backend.swift */,
 				013EC1F81A3B973B006234D5 /* Base.lproj */,
@@ -112,6 +117,7 @@
 				013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */,
 				013EC1D01A3B95E9006234D5 /* Supporting Files */,
 				01DDCC7D1A3FFAF600D0F271 /* WebViewController.swift */,
+				017537E01A40F22700CB39FB /* LoginWebView.swift */,
 			);
 			path = redditmtu;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 				01DDCC7E1A3FFAF600D0F271 /* WebViewController.swift in Sources */,
 				0781163E1A3E306700887A5C /* PostPage.swift in Sources */,
 				013EC2041A3B973B006234D5 /* APIController.swift in Sources */,
+				E8AC6F861A412F9700806E46 /* APICommentController.swift in Sources */,
 				013EC20D1A3B973B006234D5 /* SearchResultsViewController.swift in Sources */,
 				013EC2091A3B973B006234D5 /* DetailsViewController.swift in Sources */,
+				017537E11A40F22700CB39FB /* LoginWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

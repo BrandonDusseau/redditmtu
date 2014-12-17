@@ -2,7 +2,7 @@
 //  Listing.swift
 //  redditmtu
 //
-//  Created by Chris Wallison 12/14/14.
+//  Created by Chris Wallis on 12/14/14.
 //
 //
 

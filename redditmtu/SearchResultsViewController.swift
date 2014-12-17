@@ -5,6 +5,9 @@
 //  Created by Jameson Quave on 9/16/14.
 //  Copyright (c) 2014 JQ Software LLC. All rights reserved.
 //
+//  Modified for use on RedditMTU
+//  Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
+//
 
 import UIKit
 
@@ -25,6 +28,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         api!.loadReddit()
         
         self.title = "Front Page"
+        
+        // Testing code
+        APIController.sendHTTPQuery("/api/v1/me", postdata:"")
        
     }
     func printNo(){
@@ -47,54 +53,59 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return posts.count
     }
     
+    
+    func topic(text:String, width:CGFloat) -> UILabel{
+        let label:UILabel = UILabel(frame: CGRectMake(10, 10, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.text = text
+        
+        label.sizeToFit()
+        return label
+    }
+    
+    func subreddit(text:String, width:CGFloat, offset:CGFloat) -> UILabel{
+        println(offset)
+        let label:UILabel = UILabel(frame: CGRectMake(10, (10+offset), width, (10+offset)))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.text = text
+        label.font = UIFont(name: "Helvetica", size: 10.0)
+        
+        label.sizeToFit()
+        return label
+    }
+
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
         
         let post = self.posts[indexPath.row]
-        cell.textLabel?.text = post.title
-        /*cell.imageView?.image = UIImage(named: "Blank52")
+        //cell.textLabel?.text = post.title
+        //cell.detailTextLabel?.text = post.subreddit
         
-        // Get the formatted price string for display in the subtitle
-        let formattedPrice = album.price
+        var body = topic(post.title, width: 300.0)
+        body.tag = 1
+        body.layoutIfNeeded()
+        cell.addSubview(body)
         
-        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-        let urlString = album.thumbnailImageURL
-        
-        // Check our image cache for the existing key. This is just a dictionary of UIImages
-        //var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
-        var image = self.imageCache[urlString]
+        var subr = subreddit(post.subreddit, width: 300.0, offset: body.frame.height)
+        subr.tag = 2
+        subr.layoutIfNeeded()
+        cell.addSubview(subr)
         
         
-        if( image == nil ) {
-            // If the image does not exist, we need to download it
-            var imgURL: NSURL = NSURL(string: urlString)!
-            
-            // Download an NSData representation of the image at the URL
-            let request: NSURLRequest = NSURLRequest(URL: imgURL)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                if error == nil {
-                    image = UIImage(data: data)
-                    
-                    // Store the image in to our cache
-                    self.imageCache[urlString] = image
-                }
-                else {
-                    println("Error: \(error.localizedDescription)")
-                }
-            })
-            
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                cellToUpdate.imageView?.image = image
-            }
-        })
-        */
-        cell.detailTextLabel?.text = post.subreddit
+        cell.sizeThatFits(body.frame.size)
+        tableView.rowHeight = body.frame.height+10+subr.frame.height
+        cell.clipsToBounds = true
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
+        cell.prepareForReuse()
     }
     
     // The APIControllerProtocol method
@@ -136,12 +147,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         // Check if we're going to the Login Page
         if (segue.identifier == "loginSegue") {
-            var destViewController = segue.destinationViewController as WebViewController
-            
-            let firstHalf = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state="
-            let secondHalf = "&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
-            
-            var finalURL = firstHalf + NSUUID().UUIDString + secondHalf
+            var destViewController = segue.destinationViewController as LoginWebView
+            let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
+            var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
             
             destViewController.inputURL = finalURL
         }
