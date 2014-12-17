@@ -129,9 +129,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
             // Already logged in, go to Account page
             if let acctInfo = getAccountIdentity() {
-
+            
             var acctViewController: AccountViewController = self.storyboard?.instantiateViewControllerWithIdentifier("accountView") as AccountViewController
-
+            
+            // Set all of the info for the new view
             if let create : Double = acctInfo["created_utc"] as? Double {
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "MMMM d, y"
@@ -150,7 +151,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             if let linkKarma : Int = acctInfo["link_karma"] as? Int {
                 acctViewController.linkKarma = "Link Karma: \(linkKarma)"
             }
-
+            
+            // Segue to the view
             navigationController?.pushViewController(acctViewController, animated: true)
             }
 
@@ -158,10 +160,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
             // Not logged in, go to Login page
             var destViewController: LoginWebView = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as LoginWebView
-
+            
+            // Get the device's UUID
             let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
             var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,mysubreddits,read"
 
+            // Give the web view the URL of the auth login page
             destViewController.inputURL = finalURL
             navigationController?.pushViewController(destViewController, animated: true)
         }

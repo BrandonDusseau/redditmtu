@@ -13,9 +13,11 @@ class WebViewController : UIViewController {
     
     override func viewDidLoad() {
         
+        // Create a URL from the given string
         let requestURL = NSURL(string: inputURL)
         let request = NSURLRequest(URL: requestURL!)
         
+        // Have the web view load the page
         webView.loadRequest(request)
     }
 }
