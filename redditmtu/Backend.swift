@@ -129,9 +129,10 @@ func getAuthToken(code: String) {
         var components = NSDateComponents()
         let expire = response!["expires_in"] as Int
         components.setValue(expire, forComponent: NSCalendarUnit.CalendarUnitSecond)
-
         auth_expires = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: NSDate(), options: NSCalendarOptions(0))!
+        
     } else {
+        // If there is an error, delete any current authentication tokens
         if response != nil {
             println("Error in authentication: \(response)")
         }
@@ -201,6 +202,8 @@ func sendHTTPQuery(api: String, postdata: String, access_token: String?) -> NSDi
     }
     let requestBodyData = (postdata as NSString).dataUsingEncoding(NSUTF8StringEncoding)
     request.HTTPBody = requestBodyData
+    
+    // Set user agent to comply with API rules
     request.setValue("redditmtu/1.0", forHTTPHeaderField: "User-Agent")
     
     // Prepare response
@@ -215,13 +218,14 @@ func sendHTTPQuery(api: String, postdata: String, access_token: String?) -> NSDi
         println("Using token authentication (\(access_token!))")
     }
     
-    //
+    // Send request
     var error: NSErrorPointer = nil
     var dataVal: NSData? =  NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error:nil)
     var err: NSError
     
     println("API call: \(api)\nPOST data: \(postdata)")
     
+    // Get result if available
     if (dataVal != nil) {
         var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataVal!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         
