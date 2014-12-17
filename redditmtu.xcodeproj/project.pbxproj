@@ -18,6 +18,7 @@
 		013EC2091A3B973B006234D5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1FE1A3B973B006234D5 /* DetailsViewController.swift */; };
 		013EC20C1A3B973B006234D5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC2011A3B973B006234D5 /* Post.swift */; };
 		013EC20D1A3B973B006234D5 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */; };
+		01672B051A412A20002D108C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01672B041A412A20002D108C /* AccountViewController.swift */; };
 		017537E11A40F22700CB39FB /* LoginWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017537E01A40F22700CB39FB /* LoginWebView.swift */; };
 		01DDCC7E1A3FFAF600D0F271 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DDCC7D1A3FFAF600D0F271 /* WebViewController.swift */; };
 		078116381A3E128400887A5C /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078116371A3E128400887A5C /* Backend.swift */; };
@@ -52,6 +53,7 @@
 		013EC1FE1A3B973B006234D5 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		013EC2011A3B973B006234D5 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		013EC2021A3B973B006234D5 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		01672B041A412A20002D108C /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		017537E01A40F22700CB39FB /* LoginWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWebView.swift; sourceTree = "<group>"; };
 		01DDCC7D1A3FFAF600D0F271 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		078116371A3E128400887A5C /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				013EC1F81A3B973B006234D5 /* Base.lproj */,
 				0781163F1A3E35C700887A5C /* Comment.swift */,
 				013EC1FE1A3B973B006234D5 /* DetailsViewController.swift */,
+				01672B041A412A20002D108C /* AccountViewController.swift */,
 				013EC1DC1A3B95E9006234D5 /* Images.xcassets */,
 				0781163B1A3E147D00887A5C /* Listing.swift */,
 				013EC2011A3B973B006234D5 /* Post.swift */,
@@ -254,6 +257,7 @@
 			files = (
 				013EC2051A3B973B006234D5 /* AppDelegate.swift in Sources */,
 				0781163C1A3E147D00887A5C /* Listing.swift in Sources */,
+				01672B051A412A20002D108C /* AccountViewController.swift in Sources */,
 				013EC20C1A3B973B006234D5 /* Post.swift in Sources */,
 				078116381A3E128400887A5C /* Backend.swift in Sources */,
 				013EC1D61A3B95E9006234D5 /* redditmtu.xcdatamodeld in Sources */,
