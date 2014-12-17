@@ -9,10 +9,6 @@
 import UIKit
 
 class LoginWebView : UIViewController, UIWebViewDelegate {
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     var inputURL: String!
     @IBOutlet weak var webView: UIWebView!
@@ -36,6 +32,7 @@ class LoginWebView : UIViewController, UIWebViewDelegate {
                 var values = item.componentsSeparatedByString("=")
                 if (values[0] == "code") {
                     println("Your code is: \(values[1])")
+                    getAuthToken(values[1])
                     webView.stopLoading()
                     navigationController?.popViewControllerAnimated(true)
                 }
