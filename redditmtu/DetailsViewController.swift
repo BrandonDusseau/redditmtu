@@ -10,7 +10,6 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var post: Post?
     
-    @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var postAuthor: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var appsTableView: UITableView?
