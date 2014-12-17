@@ -132,8 +132,8 @@ func getAuthToken(code: String) {
         var components = NSDateComponents()
         let expire = response!["expires_in"] as Int
         components.setValue(expire, forComponent: NSCalendarUnit.CalendarUnitSecond)
-        //auth_expires = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: NSDate(), options: NSCalendarOptions(0))
-        auth_expires = NSDate()
+
+        auth_expires = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: NSDate(), options: NSCalendarOptions(0))!
     } else {
         if response != nil {
             println("Error in authentication: \(response)")

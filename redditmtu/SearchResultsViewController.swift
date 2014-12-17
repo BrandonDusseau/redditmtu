@@ -14,6 +14,7 @@ import UIKit
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol {
     
     @IBOutlet var appsTableView : UITableView?
+    @IBOutlet var leftButton: UIBarButtonItem?
     var tableData = []
     var api : APIController?
     var imageCache = [String : UIImage]()
@@ -139,25 +140,59 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             var selectedPost = self.posts[postIndex]
             detailsViewController.post = selectedPost
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if (auth_token != nil) {
+            leftButton?.title = "Account"
+        } else {
+            leftButton?.title = "Login"
+        }
+    }
+    
+    @IBAction func manualSegue(sender: AnyObject) {
+        // Check if we're logged in
+        if (auth_token != nil) {
+            
+            // Already logged in, go to Account page
+            if let acctInfo = getAccountIdentity() {
         
-        // Check if we're going to the Login Page
-        if (segue.identifier == "loginSegue") {
-            var destViewController = segue.destinationViewController as WebViewController
+            var acctViewController: AccountViewController = self.storyboard?.instantiateViewControllerWithIdentifier("accountView") as AccountViewController
+            
+            if let create : Double = acctInfo["created_utc"] as? Double {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "MMMM d, y"
+                let formattedTimestamp = dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: create))
+                acctViewController.accountDate = "Redditor since \(formattedTimestamp)"
+            }
+            
+            if let user : String = acctInfo["name"] as? String {
+                acctViewController.username = "User \(user)"
+            }
+                
+            if let commentKarma : Int = acctInfo["comment_karma"] as? Int {
+                acctViewController.commentKarma = "Comment Karma: \(commentKarma)"
+            }
+                
+            if let linkKarma : Int = acctInfo["link_karma"] as? Int {
+                acctViewController.linkKarma = "Link Karma: \(linkKarma)"
+            }
+            
+            navigationController?.pushViewController(acctViewController, animated: true)
+                
+            }
+            
+        } else {
+            
+            // Not logged in, go to Login page
+            var destViewController: LoginWebView = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as LoginWebView
+            
             let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
             var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,mysubreddits,read"
             
-            if (true) {
-                var destViewController = segue.destinationViewController as AccountViewController
-                destViewController.accountDate = "Date is testy."
-                destViewController.username = "Test test test."
-                
-            } else {
-                var destViewController = segue.destinationViewController as LoginWebView
-                let deviceUUID = UIDevice.currentDevice().identifierForVendor.UUIDString
-                var finalURL = "https://ssl.reddit.com/api/v1/authorize.compact?client_id=n7Vg85H--tQlBw&response_type=code&state=\(deviceUUID)&redirect_uri=http://www.reddit.com&duration=permanent&scope=identity,edit,history,mysubreddits,read,report,vote,subscribe"
-                
-                destViewController.inputURL = finalURL
-            }
+            destViewController.inputURL = finalURL
+            navigationController?.pushViewController(destViewController, animated: true)
         }
     }
     
@@ -165,7 +200,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         //if (auth_token == nil) {
         //    getAuthToken("lT6GHnJG0TJR4FlkS5DIYXafOC4")
         //}
-        //getAccountIdentity()
+        
+        getAccountIdentity()
         //getAccountFriends()
         //getAccountKarma()
         //getAccountTrophies()
