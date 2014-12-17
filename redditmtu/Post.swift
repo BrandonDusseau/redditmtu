@@ -36,6 +36,7 @@ class Post {
         self.selfText = (postDict["selftext"]! as? String)!
         self.score = (postDict["score"]! as? Int)!
         self.permaLink = (postDict["permalink"]! as? String)!
+         //println(self.permaLink);
         self.numberOfComments = (postDict["num_comments"]! as? Int)!
     }
     
@@ -53,55 +54,10 @@ class Post {
             // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
             for result in allResults {
                 var resultsArr: NSDictionary = result["data"] as NSDictionary
-                //println(resultsArr)
-               // println("")
-
-                //println(resultsArr["id"]!)
-                
-//                var title = resultsArr["title"]! as? String
-//                println(title)
-//                var author = resultsArr["author"]! as? String
-//                var subreddit = resultsArr["subreddit"]! as? String
-//                var url = resultsArr["url"]! as? String
-//                
-//                var newPost = Post(title: title!, author: author!, subreddit: subreddit!, postURL: url!)
-//                posts.append(newPost)
-                
                 var newPost = Post(postDict: resultsArr)
                 posts.append(newPost)
                 
-                /*
-                var name = result["trackName"] as? String
-                //if name == nil {
-                //    name = result["collectionName"] as? String
-                //}
-                
-                // Sometimes price comes in as formattedPrice, sometimes as collectionPrice.. and sometimes it's a float instead of a string. Hooray!
-                var price = result["formattedPrice"] as? String
-                if price == nil {
-                    price = result["collectionPrice"] as? String
-                    if price == nil {
-                        var priceFloat: Float? = result["collectionPrice"] as? Float
-                        var nf: NSNumberFormatter = NSNumberFormatter()
-                        nf.maximumFractionDigits = 2
-                        if priceFloat != nil {
-                            price = "$"+nf.stringFromNumber(priceFloat!)!
-                        }
-                    }
-                }
-                
-                let thumbnailURL = result["artworkUrl60"] as? String ?? ""
-                let imageURL = result["artworkUrl100"] as? String ?? ""
-                let artistURL = result["artistViewUrl"] as? String ?? ""
-                
-                var itemURL = result["collectionViewUrl"] as? String
-                if itemURL == nil {
-                    itemURL = result["trackViewUrl"] as? String
-                }
-                
-                var newAlbum = Album(name: name!, price: price!, thumbnailImageURL: thumbnailURL, largeImageURL: imageURL, itemURL: itemURL!, artistURL: artistURL)
-                //posts.append(newAlbum)
-*/
+    
             }
         }
         return posts
