@@ -30,8 +30,7 @@ class Post {
     }
     
     class func postsWithJSON(allResults: NSArray) -> [Post] {
-        
-        // Create an empty array of Albums to append to from this list
+
         var posts = [Post]()
         
         // Store the results in our table data array

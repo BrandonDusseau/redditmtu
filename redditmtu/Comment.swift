@@ -22,8 +22,6 @@ class Comment {
     }
     
     class func commentsWithJSON(allResults: NSArray) -> [Comment] {
-        
-        // Create an empty array of Albums to append to from this list
         var comments = [Comment]()
         
         // Store the results in our table data array
