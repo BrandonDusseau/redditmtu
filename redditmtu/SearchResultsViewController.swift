@@ -1,12 +1,6 @@
 //
-//  ViewController.swift
-//  MusicPlayer
-//
-//  Created by Jameson Quave on 9/16/14.
-//  Copyright (c) 2014 JQ Software LLC. All rights reserved.
-//
-//  Modified for use on RedditMTU
-//  Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
+// Handles view for main page
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import UIKit
@@ -18,7 +12,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var tableData = []
     var api : APIController?
     var imageCache = [String : UIImage]()
-    var albums = [Album]()
     var posts = [Post]()
     let kCellIdentifier: String = "SearchResultCell"
 
@@ -29,18 +22,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         api!.loadReddit()
 
         self.title = "Front Page"
-
-        // Testing code
-        //sendHTTPQuery("/api/v1/me", postdata:"")
-    }
-    func printNo(){
-        println("No")
     }
 
     func loadLogin(){
         let vc : UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("vcLogin") as UIViewController
-        //self.window!.rootViewController = viewcontroller
-        //let vc = LoginController
         navigationController?.pushViewController(vc, animated:true)
     }
 
@@ -65,7 +50,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func subreddit(text:String, width:CGFloat, offset:CGFloat) -> UILabel{
-        println(offset)
         let label:UILabel = UILabel(frame: CGRectMake(10, (10+offset), width, (10+offset)))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -82,8 +66,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
 
         let post = self.posts[indexPath.row]
-        //cell.textLabel?.text = post.title
-        //cell.detailTextLabel?.text = post.subreddit
 
         var body = topic(post.title, width: 300.0)
         body.tag = 1
@@ -113,25 +95,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         var resultsArr: NSDictionary = results["data"]! as NSDictionary
         var resultsArr2: NSArray = resultsArr["children"] as NSArray
                 dispatch_async(dispatch_get_main_queue(), {
-            //self.albums = Album.albumsWithJSON(resultsArr)
             self.posts = Post.postsWithJSON(resultsArr2)
             self.appsTableView!.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
     }
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        // Get the row data for the selected row
-//        var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
-//
-//        var name: String = rowData["trackName"] as String
-//        var formattedPrice: String = rowData["formattedPrice"] as String
-//
-//        var alert: UIAlertView = UIAlertView()
-//        alert.title = name
-//        alert.message = formattedPrice
-//        alert.addButtonWithTitle("Ok")
-//        alert.show()
-//    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
@@ -200,15 +168,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     @IBAction func TriggerThing(sender: AnyObject) {
-        //if (auth_token == nil) {
-        //    getAuthToken("lT6GHnJG0TJR4FlkS5DIYXafOC4")
-        //}
-
         getAccountIdentity()
-        //getAccountFriends()
-        //getAccountKarma()
-        //getAccountTrophies()
-        //getAccountSubreddits()
     }
     
 }

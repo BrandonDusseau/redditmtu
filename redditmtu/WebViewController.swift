@@ -1,9 +1,6 @@
 //
-//  WebViewController.swift
-//  redditmtu
-//
-//  Created by Clayton Marriott on 12/13/14.
-//
+// Handles browser view
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import UIKit

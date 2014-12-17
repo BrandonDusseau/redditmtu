@@ -1,9 +1,6 @@
 //
-//  LoginWebView.swift
-//  redditmtu
-//
-//  Created by Clayton Marriott on 12/16/14.
-//
+// Handles web browser view for authentication
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import UIKit
@@ -31,7 +28,6 @@ class LoginWebView : UIViewController, UIWebViewDelegate {
             for item in query! {
                 var values = item.componentsSeparatedByString("=")
                 if (values[0] == "code") {
-                    println("Your code is: \(values[1])")
                     getAuthToken(values[1])
                     webView.stopLoading()
                     navigationController?.popViewControllerAnimated(true)

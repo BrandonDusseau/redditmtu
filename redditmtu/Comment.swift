@@ -1,9 +1,6 @@
 //
-//  Comment.swift
-//  redditmtu
-//
-//  Created by Chris Wallis on 12/14/14.
-//
+// Handles comment loading via JSON
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import Foundation
@@ -16,22 +13,8 @@ class Comment {
     var body : String
     var subreddit: String
     
-    /*init(commentDict: NSDictionary) {
-        self.author = (commentDict["author"]! as? String)!
-        self.subreddit = (commentDict["subreddit"]! as? String)!
-        self.body = (commentDict["body"]! as? String)!
-        self.score = (commentDict["score"]! as? Int)!
-        //println(self.permaLink);
-    }*/
-    
     //Data should just be the dictionary that contains the data relavent to the commnet
     init(data: NSDictionary) {
-
-        /*if let repliesDict = data["replies"] as? NSDictionary {
-            replies = parseCommentsListing(repliesDict)
-        } else {
-            replies = [Comment]()
-        }*/
         author = data["author"] as String
         score = data["score"] as Int
         body = data["body"] as String
@@ -46,13 +29,8 @@ class Comment {
         // Store the results in our table data array
         
         if allResults.count>0 {
-            println(allResults.count)
-            println("Beginning comment population")
             var temp = 0
-            // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
             for result in allResults {
-                //println(result["data"]);
-                //println(temp++)
                 temp++
                 if(temp+1 < allResults.count){
                 var resultsArr: NSDictionary = result["data"] as NSDictionary
@@ -62,7 +40,7 @@ class Comment {
                 
             }
         }
-        println(comments.count)
+        
         return comments
     }
 

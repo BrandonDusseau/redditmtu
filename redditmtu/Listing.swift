@@ -1,9 +1,6 @@
 //
-//  Listing.swift
-//  redditmtu
-//
-//  Created by Chris Wallis on 12/14/14.
-//
+// Listing.swift
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import Foundation
@@ -21,7 +18,7 @@ class Listing {
         } else {
             before = nil
         }
-        println(before)
+        
         posts = Post.postsWithJSON(data["children"] as NSArray)
     }
 }

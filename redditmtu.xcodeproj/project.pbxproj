@@ -10,7 +10,6 @@
 		013EC1D61A3B95E9006234D5 /* redditmtu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1D41A3B95E9006234D5 /* redditmtu.xcdatamodeld */; };
 		013EC1DD1A3B95E9006234D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013EC1DC1A3B95E9006234D5 /* Images.xcassets */; };
 		013EC1EC1A3B95E9006234D5 /* redditmtuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1EB1A3B95E9006234D5 /* redditmtuTests.swift */; };
-		013EC2031A3B973B006234D5 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1F51A3B973B006234D5 /* Album.swift */; };
 		013EC2041A3B973B006234D5 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1F61A3B973B006234D5 /* APIController.swift */; };
 		013EC2051A3B973B006234D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EC1F71A3B973B006234D5 /* AppDelegate.swift */; };
 		013EC2061A3B973B006234D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013EC1F91A3B973B006234D5 /* LaunchScreen.xib */; };
@@ -47,7 +46,6 @@
 		013EC1E51A3B95E9006234D5 /* redditmtuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = redditmtuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		013EC1EA1A3B95E9006234D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		013EC1EB1A3B95E9006234D5 /* redditmtuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redditmtuTests.swift; sourceTree = "<group>"; };
-		013EC1F51A3B973B006234D5 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		013EC1F61A3B973B006234D5 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		013EC1F71A3B973B006234D5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		013EC1FA1A3B973B006234D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				CA9B24EC1A40FFEF00FC6617 /* logo.png */,
-				013EC1F51A3B973B006234D5 /* Album.swift */,
 				013EC1F61A3B973B006234D5 /* APIController.swift */,
 				E8AC6F851A412F9700806E46 /* APICommentController.swift */,
 				013EC1F71A3B973B006234D5 /* AppDelegate.swift */,
@@ -268,7 +265,6 @@
 				013EC20C1A3B973B006234D5 /* Post.swift in Sources */,
 				078116381A3E128400887A5C /* Backend.swift in Sources */,
 				013EC1D61A3B95E9006234D5 /* redditmtu.xcdatamodeld in Sources */,
-				013EC2031A3B973B006234D5 /* Album.swift in Sources */,
 				078116401A3E35C700887A5C /* Comment.swift in Sources */,
 				01DDCC7E1A3FFAF600D0F271 /* WebViewController.swift in Sources */,
 				0781163E1A3E306700887A5C /* PostPage.swift in Sources */,

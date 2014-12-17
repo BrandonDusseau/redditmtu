@@ -1,9 +1,6 @@
 //
-//  AccountViewController.swift
-//  redditmtu
-//
-//  Created by Clayton Marriott on 12/16/14.
-//
+// Handles view for account details
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import UIKit
