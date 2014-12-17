@@ -1,9 +1,6 @@
 //
-//  Backend.swift
-//  redditmtu
-//
-//  Created by Chris Wallis on 12/14/14.
-//
+// API Backend
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import Foundation

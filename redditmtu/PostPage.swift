@@ -1,9 +1,6 @@
 //
-//  PostPage.swift
-//  redditmtu
-//
-//  Created by Chris Wallis on 12/14/14.
-//
+// PostPage
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import Foundation

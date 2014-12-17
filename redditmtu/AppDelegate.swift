@@ -1,9 +1,6 @@
 //
-//  AppDelegate.swift
-//  TableTest
-//
-//  Created by Alex Dinsmoor on 12/5/14.
-//  Copyright (c) 2014 Dinsmoor. All rights reserved.
+// AppDelegate
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import UIKit

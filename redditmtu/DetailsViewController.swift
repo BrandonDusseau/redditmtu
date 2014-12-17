@@ -1,9 +1,6 @@
 //
-//  DetailsViewController.swift
-//  TableTest
-//
-//  Created by Alex Dinsmoor on 12/7/14.
-//  Copyright (c) 2014 Dinsmoor. All rights reserved.
+// Handles view for post details
+// Alex Dinsmoor, Brandon Dusseau, Clayton Marriott, Chris Wallis
 //
 
 import UIKit
@@ -27,7 +24,6 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewDidLoad() {
-        // super.viewDidLoad()
         titleLabel.text = self.post?.author
         postAuthor.text = self.post?.title
         api = APICommentController(delegate: self)
@@ -39,8 +35,6 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("Table count is")
-        println(comments.count)
         return comments.count
     }
     
@@ -55,7 +49,6 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func commentPoster(text:String, width:CGFloat, offset:CGFloat) -> UILabel{
-        println(offset)
         let label:UILabel = UILabel(frame: CGRectMake(10, (10+offset), width, (10+offset)))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -66,11 +59,9 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println("Defining table")
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
         let comment = self.comments[indexPath.row]
         var commentText = commentBody(comment.body, width: 300.0)
-        //newLabel.text = comment.body
         commentText.tag = 1
         commentText.layoutIfNeeded()
         
@@ -78,7 +69,6 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.addSubview(commentText)
         
         var user = commentPoster(comment.author, width: 300.0, offset: commentText.frame.height)
-        //newLabel.text = comment.body
         user.tag = 2
         user.layoutIfNeeded()
        
@@ -87,8 +77,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
         cell.sizeThatFits(commentText.frame.size)
-    tableView.rowHeight = commentText.frame.height+10+user.frame.height
-        //tableView.rowHeight = 200
+        tableView.rowHeight = commentText.frame.height+10+user.frame.height
         cell.clipsToBounds = true
         
         
@@ -100,26 +89,16 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.prepareForReuse()
     }
     
-
-    
     // The APIControllerProtocol method
     func didReceiveAPIResults(results: NSArray) {
-        //var resultsArr: NSDictionary = results["data"]! as NSDictionary
-        //var resultsArr2: NSArray = resultsArr["children"] as NSArray
         let results1: NSDictionary = results[1] as NSDictionary
-        //println(results1);
         let results2: NSArray = results1["data"]!["children"] as NSArray
         dispatch_async(dispatch_get_main_queue(), {
-            //self.albums = Album.albumsWithJSON(resultsArr)
             self.comments = Comment.commentsWithJSON(results2)
-            println(self.comments)
             self.appsTableView!.reloadData()
-            println("Table reloaded")
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
