@@ -173,9 +173,4 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             navigationController?.pushViewController(destViewController, animated: true)
         }
     }
-
-    @IBAction func TriggerThing(sender: AnyObject) {
-        getAccountIdentity()
-    }
-    
 }

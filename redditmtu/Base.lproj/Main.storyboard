@@ -42,11 +42,6 @@
                                 <action selector="manualSegue:" destination="vXZ-lx-hvc" id="jeN-fC-iZE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="PUSH TO TEST" style="done" id="7kP-AU-Tjr">
-                            <connections>
-                                <action selector="TriggerThing:" destination="vXZ-lx-hvc" id="3xw-F1-Vof"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
