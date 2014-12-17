@@ -70,7 +70,7 @@
                 </tableView>
                 <viewController id="PfP-aW-Dii">
                     <view key="view" contentMode="scaleToFill" id="oKW-66-qC2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="667.73333333333335" y="352.15999999999997"/>
         </scene>
-        <!--Web View Controller-->
+        <!--Login Web View-->
         <scene sceneID="edd-EZ-739">
             <objects>
-                <viewController id="Pme-zo-5c5" customClass="WebViewController" customModule="redditmtu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Pme-zo-5c5" customClass="LoginWebView" customModule="redditmtu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bjV-9f-Wyq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
