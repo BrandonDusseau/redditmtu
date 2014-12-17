@@ -13,11 +13,13 @@ class APICommentController{
     
     var delegate: APICommentControllerProtocol
     
+    //Confirm delegate is present
     init(delegate: APICommentControllerProtocol) {
         self.delegate = delegate
     }
     
     func loadPost(urlPath: String){
+        //Define URL from parent post
         let url = NSURL(string: urlPath)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
@@ -26,12 +28,13 @@ class APICommentController{
                 println(error.localizedDescription)
             }
             var err: NSError?
-            
+            //JSON from Reddit
             var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as NSArray
             if(err != nil) {
                 // If there is an error parsing JSON, print it to the console
                 println("JSON Error \(err!.localizedDescription)")
             }
+            //JSON Unwrapping
             let results1: NSDictionary = jsonResult[1] as NSDictionary
             let results: NSArray = results1["data"]!["children"] as NSArray
             self.delegate.didReceiveAPIResults(jsonResult)

@@ -29,6 +29,8 @@ class Comment {
         if allResults.count>0 {
             var temp = 0
             for result in allResults {
+                //Reddit for some reason returns more comments than are valid by 2
+                //It's an issue with their JSON, so prevent errorus accessing
                 temp++
                 if(temp+1 < allResults.count){
                 var resultsArr: NSDictionary = result["data"] as NSDictionary

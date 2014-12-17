@@ -17,10 +17,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //API Access
         api = APIController(delegate: self)
+        //Notify user of data access
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         api!.loadReddit()
-
         self.title = "Front Page"
     }
 
@@ -38,35 +39,35 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return posts.count
     }
 
-
+    //Dynamic post title label
     func topic(text:String, width:CGFloat) -> UILabel{
         let label:UILabel = UILabel(frame: CGRectMake(10, 10, width, CGFloat.max))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.text = text
-
+        //Resizes label
         label.sizeToFit()
         return label
     }
-
+    //Dynamic subreddit label
     func subreddit(text:String, width:CGFloat, offset:CGFloat) -> UILabel{
         let label:UILabel = UILabel(frame: CGRectMake(10, (10+offset), width, (10+offset)))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.text = text
         label.font = UIFont(name: "Helvetica", size: 10.0)
-
+        //Resizes label
         label.sizeToFit()
         return label
     }
 
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
+        //Grab Cell
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
-
+        //Load post
         let post = self.posts[indexPath.row]
-
+        //Create labels
         var body = topic(post.title, width: 300.0)
         body.tag = 1
         body.layoutIfNeeded()
@@ -76,8 +77,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         subr.tag = 2
         subr.layoutIfNeeded()
         cell.addSubview(subr)
-
-
+        
+        //Set cell height
         cell.sizeThatFits(body.frame.size)
         tableView.rowHeight = body.frame.height+10+subr.frame.height
         cell.clipsToBounds = true
@@ -85,6 +86,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
 
+    //Function clears cell contents. This prevents the table from not clearing cell
+    //Contents when re-used
     func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
         cell.prepareForReuse()
